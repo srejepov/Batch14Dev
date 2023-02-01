@@ -1,0 +1,22 @@
+select id, name, phone from Account
+
+select id, name, project_name__c, Status__c, Description__c from Salesforce_Project__c
+
+select id, name, MailingCity from Contact where MailingCity = 'Paris'
+
+select id, name, MailingCity from Contact where name like '%f%'
+
+SELECT Id, Name, Type, BillingCity, createddate FROM Account order by createddate desc limit 5
+
+SELECT Id, Name, industry from account where industry = 'energy' limit 2
+
+select id, name, status__c from Salesforce_project__c where status__c != 'New'
+
+select id, name, industry, phone, accountnumber, annualrevenue from account where (phone != null or website != null) and accountnumber != null
+
+select id, name, industry, phone, accountnumber, annualrevenue from account where annualrevenue < 500000000
+
+select id, name, industry, phone, accountnumber, annualrevenue from account where createddate = last_n_days:365
+
+select id, name, project_name__c, status__c, (select subject__c from salesforce_tickets__r) from salesforce_project__c
+

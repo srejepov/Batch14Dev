@@ -1,0 +1,2 @@
+SOQLParentChildRelationship.childToParent();
+SOQLParentChildRelationship.parentToChild();
