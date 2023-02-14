@@ -8,3 +8,8 @@ DmlDemo.dmlDemoMultipleInsert_right1();
 DmlDemo.dmlDemoMultipleInsert_right2();
 DmlDemo.dmlDemoMultipleUpdate_right1();
 DmlDemo.dmlDemoMultipleUpdate_right2();
+
+//list<account> delAccounts = [select id from account where createddate = today limit 70];
+//delete delAccounts;
+
+delete [select id from account where createddate = today limit 70];
