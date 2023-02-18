@@ -1,8 +1,63 @@
 trigger AccountTrigger on Account (before insert, before update, after insert, after update) {    
     system.debug('----- trigger starts -----');
+    
+    if (trigger.isBefore) {
+        AccountTriggerHandler.updateDescription(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
+    }       
 
+    system.debug('===== trigger ends ====='); 
+
+    /*
     Map<Id, Account>  trgNewMap = trigger.newMap;
     Map<Id, Account>  trgOldMap = trigger.oldMap;
+
+    if (trigger.isBefore && trigger.isUpdate) {
+        integer countWebsiteChange = 0;
+        for (id eachId : trgNewMap.keySet()) {
+            Account newAccount = trgNewMap.get(eachId);
+            Account oldAccount = trgOldMap.get(eachId);
+
+            system.debug('new account website field value ' + newAccount.Website);
+            system.debug('old account website field value ' + oldAccount.Website);
+
+            if (newAccount.Website != oldAccount.Website) {
+                system.debug('for account ' +  newAccount.Name + ', new website is ' + newAccount.website);
+                countWebsiteChange++;
+            }
+        }
+        system.debug('number of records where website is changed ' + countWebsiteChange);
+    }
+
+
+
+    if (trigger.isAfter && trigger.isUpdate) {
+        set<id> setIds = trgNewMap.keySet();
+
+        for (id eachID : setIds) {
+            
+            account newAcc = trgNewMap.get(eachID);
+            account oldAcc = trgOldMap.get(eachID);
+
+            string newName = newAcc.Name;
+            string oldName = oldAcc.Name;
+
+            system.debug('new account name is ' + newName + ', old account name was ' + oldName);
+            system.debug('new account name is version 2 ' + trigger.newMap.get(eachID).Name);
+            system.debug('old account name was version 2 ' + trigger.oldMap.get(eachID).Name);
+        }
+
+        for (account eachNewAccount : trigger.new) {
+            string newAccName = eachNewAccount.Name;
+
+            Account oldAcc = trgOldMap.get(eachNewAccount.Id);
+            string oldAccName = oldAcc.Name;
+
+            system.debug('new account name is ' + newAccName + ', old account name was ' + oldAccName);
+        }
+    } 
+
+
+
 
     if (trigger.isBefore && trigger.isInsert) {
         system.debug('=====Before Insert====');
@@ -25,9 +80,8 @@ trigger AccountTrigger on Account (before insert, before update, after insert, a
         system.debug('trigger.oldMap -> ' + trgOldMap);
     }
 
-    system.debug('===== trigger ends ====='); 
 
-    /*
+
     if(trigger.isAfter){
 
         if(trigger.isUpdate){
