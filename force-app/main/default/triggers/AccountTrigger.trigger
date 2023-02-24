@@ -5,7 +5,46 @@ trigger AccountTrigger on Account (before insert, before update, after insert, a
         AccountTriggerHandler.updateDescription(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
     }       
 
+    if (trigger.isAfter && trigger.isUpdate) {
+        AccountTriggerHandler.updateVIPforContact(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
+    }
+
+    if (trigger.isAfter && trigger.isUpdate) {
+        AccountTriggerHandler.updateMailingCityforContact(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
+    }
+
     system.debug('===== trigger ends ====='); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
     /*
     Map<Id, Account>  trgNewMap = trigger.newMap;
