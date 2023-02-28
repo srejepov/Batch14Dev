@@ -57,4 +57,18 @@ public class AccountTriggerHandler {
             update contactList;
         }
     }
+    //home assignment 17, Feb 21
+    public static void createContact(List<Account> accTriggerNew) {
+        List<Contact> contList = new List<Contact>();
+        for (account eachAccount : accTriggerNew) {
+            contact cont = new contact();
+            cont.FirstName = 'Declan';
+            cont.LastName = 'Rice';
+            cont.AccountId = eachAccount.Id;
+            contList.add(cont);
+        }
+        if (!contList.isEmpty()) {
+            insert contList;
+        }
+    }
 }

@@ -13,6 +13,10 @@ trigger AccountTrigger on Account (before insert, before update, after insert, a
         AccountTriggerHandler.updateMailingCityforContact(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
     }
 
+    if (trigger.isAfter && trigger.isInsert) {
+        AccountTriggerHandler.createContact(trigger.new);
+    }
+
     system.debug('===== trigger ends ====='); 
 
 

@@ -37,5 +37,5 @@ public class SPTriggerHandler {
                 spTriggerNewMap.get(eachST.Salesforce_Project__c).status__c.addError('Cannot complete project because all tickets are NOT completed.');
             }
         }
-   }
+   }  
 }

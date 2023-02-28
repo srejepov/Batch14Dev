@@ -7,4 +7,8 @@ trigger SalesforceProjectTrigger on Salesforce_Project__c (before insert, after 
         //validate status complete method
         SPTriggerHandler.validateStatusCompletion(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
     }
+
+    if (trigger.isAfter && trigger.isUpdate) {
+        SPTriggerHandler.stStatusNotComplete(trigger.new, trigger.old, trigger.newMap, trigger.oldMap);
+    }
 }
