@@ -1,5 +1,5 @@
 @isTest
-public class DmlDemoAgainTest {
+public class DMLDemoAgainTest {
     @isTest
     private static void testInsertStndObj() {
         //call method
@@ -10,6 +10,16 @@ public class DmlDemoAgainTest {
         //assert
         system.assertEquals(1, accs.size());
         system.assertEquals('Softinnovas', accs[0].Name);
+    }
+    @isTest
+    private static void testUpdateDemo_stndObj1() {
+        account acc = new account();
+        acc.name = 'Salesforce';
+        insert acc;
+
+        DMLDemoAgain.dmlUpdateDemo_stndObj1();
+        account updateAccount = [select id, name from account limit 1];
+        system.assertEquals('Salesforce Inc.', updateAccount.Name);
     }
 
     @isTest
@@ -38,5 +48,44 @@ public class DmlDemoAgainTest {
         //assert
         system.assertEquals('Softinnovas Inc.', updatedAcc.Name);
         assert.areEqual('Softinnovas Inc.', updatedAcc.Name);
+    }
+
+    @isTest
+    private static void testInsertDemo_stndObj2() {
+         //1. Prepare data
+         Account acc = new account();
+         acc.Name = 'Softinnovas';
+         insert acc;
+
+
+        //2. call method
+        DmlDemoAgain.dmlInsertDemo_stndObj2();
+
+        //verify that contact is created
+        //soql
+        contact con = [select lastname, accountid from contact where LastName='Biden' limit 1];
+        assert.areEqual(acc.id, con.AccountId);//new method
+
+        system.assertEquals(acc.Id, con.accountid);//old method.
+    }
+
+    @isTest
+    private static void testInsert_cstmObj2() {
+        //1. prepare data
+        //create project
+        Salesforce_Project__c sp = new Salesforce_Project__c();
+        sp.Project_Name__c = 'test project';
+        insert sp;
+
+        //call method
+        DmlDemoAgain.dmlDemoInsert_cstmObj2();
+
+        //verify.
+        //soql
+        Salesforce_Ticket__c sst = [select subject__c, priority__c, 
+        status__c, salesforce_project__c from Salesforce_Ticket__c WHERE
+        Subject__c = 'create related record via apex' ];
+        assert.areEqual(sp.Id, sst.Salesforce_Project__c);
+        assert.areEqual('High', sst.Priority__c);
     }
 }

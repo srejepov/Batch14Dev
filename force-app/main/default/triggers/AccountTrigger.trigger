@@ -1,51 +1,19 @@
-trigger AccountTrigger on Account (before insert, before update, after insert, after update) {    
-    system.debug('----- trigger starts -----');
-    
-    if (trigger.isBefore) {
-        AccountTriggerHandler.updateDescription(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
-    }       
-
-    if (trigger.isAfter && trigger.isUpdate) {
-        AccountTriggerHandler.updateVIPforContact(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
+trigger AccountTrigger on Account (before insert, before update, after insert, after update) {
+    system.debug('----- trigger start -----');
+   
+    if (Trigger.isBefore) {
+        //call handler method
+        AccountTriggerHandler.updateDescription(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.Oldmap);
     }
 
-    if (trigger.isAfter && trigger.isUpdate) {
-        AccountTriggerHandler.updateMailingCityforContact(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
-    }
-
-    if (trigger.isAfter && trigger.isInsert) {
-        AccountTriggerHandler.createContact(trigger.new);
+    if (Trigger.isAfter && Trigger.isUpdate) {
+        system.debug('Trigger.isAfter ' + Trigger.isAfter);
+        system.debug('Trigger.isUpdate ' + Trigger.isUpdate);
+        //call handler method to update vip of all contacts.
+        AccountTriggerHandler.updateVIPforContact(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.Oldmap);
     }
 
     system.debug('===== trigger ends ====='); 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     

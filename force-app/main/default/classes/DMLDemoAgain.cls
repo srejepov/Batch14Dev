@@ -1,4 +1,4 @@
-public class DmlDemoAgain {
+public class DMLDemoAgain {
     public static void dmlDemoInsert_stndObj1() {
         //1. create new instance
         account acc = new account();
