@@ -13,9 +13,9 @@ public class SPTriggerHandler {
     }
 
     public static void validateStatusCompletion(list<salesforce_project__c> spTriggerNew,
-   list<salesforce_project__c> spTriggerOld,
-   Map<id, salesforce_project__c> spTriggerNewMap,
-   Map<id, salesforce_project__c> spTriggerOldMap) {
+        list<salesforce_project__c> spTriggerOld,
+        Map<id, salesforce_project__c> spTriggerNewMap,
+        Map<id, salesforce_project__c> spTriggerOldMap) {
 
         set<id> spIds = new set<id>();
         //get all sp ids where status is changed to completed.
@@ -37,5 +37,17 @@ public class SPTriggerHandler {
                 spTriggerNewMap.get(eachST.Salesforce_Project__c).status__c.addError('Cannot complete project because all tickets are NOT completed.');
             }
         }
-   }  
+   } 
+   
+   //1. static
+   //2. it must return void
+   //3. parameters: primitive datatypes or collection of primitive data types. List of Sobject is not allowed in future method.
+   @future
+   public static void updateProjectDescription(Set<Id> spIds) {
+        List<Salesforce_Project__c> listSP = [select id, description__c from Salesforce_Project__c where id in :spIds];
+        for (Salesforce_Project__c eachSP : listSP) {
+            eachSP.Description__c = 'Updated from future.';
+        }
+        update listSP;
+   }
 }
