@@ -50,4 +50,31 @@ public class SPTriggerHandler {
         }
         update listSP;
    }
+
+   public static void projectStatusChange(list<salesforce_project__c> spTriggerNew,
+        list<salesforce_project__c> spTriggerOld,
+        Map<id, salesforce_project__c> spTriggerNewMap,
+        Map<id, salesforce_project__c> spTriggerOldMap) {
+            
+            set<id> projectIds = new set<id>();
+            for (Salesforce_Project__c eachSP : spTriggerNew) {
+                if (eachSP.Status__c == 'Completed' && eachSP.Status__c != spTriggerOldMap.get(eachSP.Id).Status__c) {
+                    projectIds.add(eachSP.Id);
+                }                
+            }
+            if (!projectIds.isEmpty()) {
+                updateTicketStatus(projectIds);
+            }    
+   }
+   @testVisible
+   @future
+   private static void updateTicketStatus(set<id> spIds) {
+
+       List<Salesforce_Ticket__c> listST = [select id, status__c, Salesforce_Project__c from Salesforce_Ticket__c
+       Where Salesforce_Project__c in :spIds and status__c !='Completed'];
+       for (Salesforce_Ticket__c st : listST) {
+            st.Status__c = 'Completed';     
+       }
+       update listST;
+   }
 }
