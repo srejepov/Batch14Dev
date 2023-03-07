@@ -1,4 +1,5 @@
-public class AccountsBatch implements Database.Batchable<SObject> {
+public class AccountsBatch implements Database.Batchable<SObject>, Database.Stateful {
+    integer recordCount = 0;
     public  Database.QueryLocator start(Database.BatchableContext bc){
         Database.QueryLocator db = Database.getQueryLocator([select id, active__c, description from account]);
         return db;
@@ -6,14 +7,24 @@ public class AccountsBatch implements Database.Batchable<SObject> {
 
     public void execute(Database.BatchableContext bc, List<Account> scope){
         system.debug('inside execute method');
-        system.debug('number of records to process is ' + scope.size());
+        system.debug(' record count: START : ' + recordCount);
+
+        List<Account> updateAccount = new List<Account>();
         for (Account eachAcc : scope) {
-            eachAcc.Description += '...Updated VIA Batch. OKAY?';
+            if (eachAcc.Active__c != 'No') {
+                eachAcc.Description += '...Updated VIA Batch.'; 
+                updateAccount.add(eachAcc);
+            }            
         }
-        update scope;
+        if (!updateAccount.isEmpty()) {
+            recordCount += updateAccount.size();
+            update scope;
+            system.debug('record count: AFTER Update :' + recordCount);
+        }        
     }
 
     public void finish(Database.BatchableContext bc){
         system.debug('finish method is called. all records are processed.');
+        system.debug('record count: FINAL : ' + recordCount);
     }
 }
