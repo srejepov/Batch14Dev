@@ -8,8 +8,9 @@ public class ContactTriggerHandler {
     }
     public static void contactUpdateValidation2(list<contact> conTriggerNew, list<contact> conTriggerOld, map<id, contact> conTriggerNewMap, map<id, contact> conTriggerOldMap) {
         for (contact eachContact : conTriggerNew) {
+            string errorMessage = system.label.ContactValidation2;
             if (eachContact.LeadSource != conTriggerOldMap.get(eachContact.Id).LeadSource) {
-                eachContact.LeadSource.addError('CANNOT UPDATE LEAD SOURCE. USER, PLEASE GOOGLE TRIGGERS!!!!');
+                eachContact.LeadSource.addError(errorMessage);
             }
         }
     }

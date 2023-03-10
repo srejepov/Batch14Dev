@@ -1,15 +1,22 @@
 public class SPTriggerHandler {
     public static void createDefaultSPTicket(list<Salesforce_Project__c> spTriggerNew) {
-        List<Salesforce_Ticket__c> newST = new List<Salesforce_Ticket__c>();
-        for (Salesforce_Project__c eachSP : spTriggerNew) {
-            Salesforce_Ticket__c st = new Salesforce_Ticket__c();
-            st.Subject__c = 'Default ST';
-            st.Salesforce_Project__c = eachSP.Id;
-            newST.add(st);
-        }
-        if (!newST.isEmpty()) {
-            insert newST;
-        }
+        try {
+            List<Salesforce_Ticket__c> newST = new List<Salesforce_Ticket__c>();
+            for (Salesforce_Project__c eachSP : spTriggerNew) {
+                Salesforce_Ticket__c st = new Salesforce_Ticket__c();
+                st.Subject__c = 'Default ST';
+                st.Salesforce_Project__c = eachSP.Id;
+                newST.add(st);
+            }
+            if (!newST.isEmpty()) {
+                insert newST;
+            }            
+        } catch (Exception ex) {
+            string errorMessage = system.label.SPTicketValidation;	
+            for (Salesforce_Project__c eachSP : spTriggerNew) {
+                eachSP.addError(errorMessage);
+            }
+        }        
     }
 
     public static void validateStatusCompletion(list<salesforce_project__c> spTriggerNew,
