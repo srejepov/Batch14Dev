@@ -1,5 +1,9 @@
 trigger AccountTrigger on Account (before insert, before update, after insert, after update) {
     system.debug('----- trigger start -----');
+    TriggerSwitch__mdt ts = TriggerSwitch__mdt.getInstance('account');
+    if (!ts.enabled__c) {
+        return;
+    }
    
     if (Trigger.isBefore) {
         //call handler method

@@ -1,4 +1,9 @@
 trigger SalesforceProjectTrigger on Salesforce_Project__c (before insert, after insert, before update, after update) {
+    TriggerSwitch__mdt ts = TriggerSwitch__mdt.getInstance('salesforce_project_c');
+    if (!ts.enabled__c) {
+        return;
+    }
+
     if (trigger.isAfter && trigger.isInsert) {
         system.debug('call method now...');
         SPTriggerHandler.updateProjectDescription(trigger.newMap.keySet()); 
