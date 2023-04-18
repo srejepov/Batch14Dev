@@ -164,18 +164,17 @@ public with sharing class RestCallouts {
 
     //Endpoint: https://api.instantwebtools.net/v1/airlines
     //Http Method: POST
-    public static HttpResponse postAirlines(Id airlineId) {
+    @future(callout=true)
+    public static void postAirlines(Id airlineId) {
        //1. Prepare HttpRequest and wrap all the necessary data in it
        HttpRequest request = new HttpRequest();
-       request.setEndpoint('https://api.instantwebtools.net/v1/airlines');
-        request.setMethod('POST');
+       request.setEndpoint('https://api.instantwebtools.net/v1/airlines');request.setMethod('POST');
 
        // set json body
        Airlines__c airline = [SELECT Name, Name__c, Country__c, Logo_URL__c, Slogan__c, Headquarters__c, Website__c, Established__c 
                                 FROM Airlines__c
-                                WHERE Id = :airlineId
-                                AND Name = null];
-        AirlinesWrapper wrapper = new AirlinesWrapper();
+                                WHERE Id = :airlineId];
+        AirlinesWrapper wrapper = new AirlinesWrapper(); //EmployeeWrapper.Employee emp = new EmployeeWrapper.Employee();
         wrapper.country = airline.Country__c;
         wrapper.established = airline.Established__c;
         wrapper.head_quaters = airline.Headquarters__c;
@@ -184,9 +183,20 @@ public with sharing class RestCallouts {
         wrapper.slogan = airline.Slogan__c;
         wrapper.website = airline.Website__c;
         String body = JSON.serialize(wrapper);
+        request.setBody(body);
+        request.setHeader('Content-Type', 'application/json;charset=UTF-8');
 
        //2. Prepare internet
+       Http http = new Http();
+
        //3. Send the request over the internet to receive HttpResponse
+       HttpResponse response = http.send(request);
+
        //4. Process the response
+       if (response.getStatusCode() == 200 || response.getStatusCode() == 201) {
+            System.debug('Data has been sent successfully!');
+       } else {
+            System.debug(response.getBody());
+       }       
     }
 }

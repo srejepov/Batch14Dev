@@ -54,3 +54,9 @@ RestCallouts.getAirlines();
 RestCallouts.getEmployee();
 RestCallouts.getCaseInfo();
 RestCallouts.postAnimal();
+
+//Test CovidInfo Callout
+CovidInfoCallout.getCovidInfo();
+
+//Test Posts Callout
+PostsCallout.postPosts();
