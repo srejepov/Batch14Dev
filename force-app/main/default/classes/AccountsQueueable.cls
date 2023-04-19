@@ -4,7 +4,6 @@ public class AccountsQueueable implements Queueable {
     public AccountsQueueable(List<Account> accs) {
         listAccount = accs;
     }
-
     public void execute(QueueableContext qc){
         system.debug('inside execute method listaccount => ' + listAccount);
 
@@ -13,6 +12,4 @@ public class AccountsQueueable implements Queueable {
         }
         update listAccount;
     }
-
-    
 }

@@ -11,4 +11,4 @@ trigger ContactTrigger on Contact (before insert, after insert, before update, a
         //call method to update rollUpsummary field
         ContactTriggerHandler.rollUpSummaryUpdate(Trigger.new, trigger.old, trigger.newmap,trigger.oldmap);
      }
-}   
+}

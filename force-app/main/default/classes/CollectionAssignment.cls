@@ -5,7 +5,7 @@ public class CollectionAssignment {
         list<string> listInLower = new list<string>();
         
         for (string eachStr : countriesSet) {
-            string allLower = eachStr.toLowerCase();
+            string allLower = eachStr.toLowerCase(eachStr);
             listInLower.add(allLower);            
         }    
         system.debug('lower case country set is ' + listInLower); 
@@ -13,7 +13,7 @@ public class CollectionAssignment {
     public void printUpperCase(){
         list<string> listInUpper = new list<string>();
         for (string eachStr : countriesSet) {
-            string allUpper = eachStr.toUpperCase();
+            string allUpper = eachStr.toUpperCase(eachStr);
             listInUpper.add(allUpper);            
         }
         system.debug('upper case country set is ' + listInUpper);

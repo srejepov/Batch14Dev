@@ -1,6 +1,4 @@
 public class CalculatorSt {
-    //Parameters: two integers
-    //returns: sum of two integers
     public static integer add(integer a, integer b) {
         return a+b;
     }
@@ -8,13 +6,13 @@ public class CalculatorSt {
         return x+y+z;
     }
     public static integer add(list<integer> intList) {
-        integer sum = 0;        
+        integer sum = 0;
+        
 
         for (integer eachInt :intList) { 
             system.debug(eachInt);           
             sum += eachInt;            
-        }  
-         
+        }   
         system.debug(sum);     
         return sum;
     }

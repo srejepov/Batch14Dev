@@ -60,3 +60,8 @@ CovidInfoCallout.getCovidInfo();
 
 //Test Posts Callout
 PostsCallout.postPosts();
+
+//Test SOAP Callouts
+SoapCallouts.getParksByCountry('United States');
+SoapCallouts.doAddCallout(54, 68);
+SoapCallouts.doMultiplyCallout(23, 46);

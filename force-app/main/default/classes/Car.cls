@@ -1,9 +1,8 @@
 public class Car {
-    // variables created directly in class are class variables
-    //class variables access modifiers
+    
     public string carColor = '';
     public string carName;
-    //default is private
+    
     integer maxSpeed = 140;
 
     public void switchOn() {
@@ -13,7 +12,6 @@ public class Car {
         system.debug('driving ' + carName);        
     }
     public void driveAtMaxSpeed(){
-        //we can access public and private class inside public method of the class
         string description = 'driving ' + carName + ' with car color ' + carColor + ' at ' + maxSpeed + 'km/h';
         system.debug(description);
     }

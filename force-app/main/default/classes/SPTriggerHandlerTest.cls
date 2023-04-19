@@ -25,5 +25,5 @@ public class SPTriggerHandlerTest {
         for (Salesforce_Project__c eachSP : allSP) {
             assert.isTrue(eachSP.Description__c.contains('future'));
         }
-    }   
+    }
 }

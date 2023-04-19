@@ -33,11 +33,7 @@ public class RankHandler {
                 prize = 'Top 10 Certificate';
             }
             when else {
-                //if (rank <= 0) {
-                   // prize = 'not a very good job';
-                //} else {
-                    prize = 'Good job buddy'; 
-                //}                 
+                prize = 'Participation certificate'; 
             } 
         }
         return prize;

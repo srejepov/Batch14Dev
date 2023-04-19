@@ -10,7 +10,10 @@ public class DML_Assignment {
         ac2.Name = 'Account Created';
         insert ac2;
         ac2.Name = 'Account Updated';
-        update ac2;   
+        update ac2;     
         
+        account ac3 = [select id, name from account where name like 'Account Created%' limit 1];
+        ac3.Name = 'Account Updated';        
+        update ac3;
     }
 }

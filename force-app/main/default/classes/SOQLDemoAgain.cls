@@ -3,6 +3,7 @@ public with sharing class SOQLDemoAgain {
         List<Account> listAcc = [select id, name, phone from account order by CreatedDate DESC];
         system.debug('list of accounts ' + listAcc);
     }
+
     public static void accountSOQL_11(){
         account acc = [select id, name, phone from account order by CreatedDate DESC limit 1];
         system.debug('latest account created is ' + acc);

@@ -10,8 +10,4 @@ public class Candidates {
         system.debug('company name is ' + companyName);
         system.debug('----end----');
     }
-    public static void printCompany() {
-        system.debug('company => ' + companyName);
-        system.debug('name of candidate => ' + name);//we cannot access NON-static variable inside static methods
-    }
 }

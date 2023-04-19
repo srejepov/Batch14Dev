@@ -21,6 +21,7 @@ public class Collections {
     } else {
         outputMonth = 'Not a valid month';
     }
+
     return outputMonth;
   }
 }
