@@ -29,5 +29,31 @@ global with sharing class AccountManager {
         String endpoint = request.requestURI;
         Integer lastIndex = endpoint.lastIndexOf('/');
         Id accId = endpoint.substring(lastIndex+1);
+        try {
+            Account acc = [SELECT Id FROM Account WHERE Id = :accId];
+            delete acc;
+        } catch (Exception ex) {
+            return 'Failed';
+        }
+        return 'Success';
+    }
+
+    @HttpPut 
+    global static Account putAccount() {
+        RestRequest request = RestContext.request;
+        String body = request.requestBody.toString();
+        Account acc = (Account)JSON.deserialize(body, Account.class);
+        upsert acc;
+        return acc;
+    }
+
+    @HttpPatch 
+    global static Account patchAccount() {
+        RestRequest request = RestContext.request;
+        String body = request.requestBody.toString();
+        Account acc = (Account)JSON.deserialize(body, Account.class);
+        update acc;
+        Account updateAcc = [SELECT Id, Name, Type, Industry, AnnualRevenue FROM Account WHERE Id = :acc.Id];
+        return updateAcc;
     }
 }
