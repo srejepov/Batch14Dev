@@ -40,4 +40,23 @@ global with sharing class LeadManager {
         }
         return 'Success';
     }
+
+    @HttpPut 
+    global static Lead putLead(){
+        RestRequest request = RestContext.request;
+        String body = request.requestBody.toString();
+        Lead lead = (Lead)JSON.deserialize(body, Lead.class);
+        upsert lead;
+        return lead;
+    }
+
+    @HttpPatch 
+    global static Lead patchLead() {
+        RestRequest request = RestContext.request;
+        String body = request.requestBody.toString();
+        Lead lead = (Lead)JSON.deserialize(body, Lead.class);
+        update lead;
+        Lead updateLead = [SELECT Id, FirstName, LastName, Company, Title, LeadSource, Email, Phone FROM Lead WHERE Id = :lead.Id];
+        return updateLead;
+    }
 }

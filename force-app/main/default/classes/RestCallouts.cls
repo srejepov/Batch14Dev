@@ -168,7 +168,8 @@ public with sharing class RestCallouts {
     public static void postAirlines(Id airlineId) {
        //1. Prepare HttpRequest and wrap all the necessary data in it
        HttpRequest request = new HttpRequest();
-       request.setEndpoint('https://api.instantwebtools.net/v1/airlines');request.setMethod('POST');
+       request.setEndpoint('https://api.instantwebtools.net/v1/airlines');
+       request.setMethod('POST');
 
        // set json body
        Airlines__c airline = [SELECT Name, Name__c, Country__c, Logo_URL__c, Slogan__c, Headquarters__c, Website__c, Established__c 

@@ -33,7 +33,7 @@ global with sharing class AccountManager {
             Account acc = [SELECT Id FROM Account WHERE Id = :accId];
             delete acc;
         } catch (Exception ex) {
-            return 'Failed';
+            return 'Fail';
         }
         return 'Success';
     }
