@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="Two Way Data Binding">
+        <div class="slds-var-m-around_medium">
+            <div>
+                <lightning-input 
+                    type="text" 
+                    label="Enter your title"
+                    value={title}
+                    onkeyup={titleChangeHandler}>
+                </lightning-input>
+                <lightning-input
+                    type="number"
+                    label="Enter your age"
+                    value={age}
+                    onkeyup={ageChangeHandler}>
+                </lightning-input>
+            </div>
+            <div class="slds-var-m-top_medium">
+                I'm {fullName} ({age}), working as a {title}.
+            </div>
+        </div>
+    </lightning-card>
+</template>
