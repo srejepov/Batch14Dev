@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Opportunities" icon-name="custom:custom5">
+        <div class="slds-var-m-around_medium">
+            <template for:each={opps} for:item="opp">
+                <div key={opp.Id} class="slds-var-m-bottom_small">
+                    <strong> Name:</strong> {opp.Name}<br/>
+                    <strong>Amount:</strong> <span class="slds-text-color_success"> {opp.Amount}</span> <br/>
+                    <strong>Industry:</strong> {opp.Industry}
+
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

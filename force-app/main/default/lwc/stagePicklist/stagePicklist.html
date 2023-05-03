@@ -1,3 +1,15 @@
 <template>
-    
+    <lightning-card title="Opportunity Stage" icon-name="custom:custom17">
+        <div class="slds-var-m-around_medium">
+            <lightning-combobox
+                label="Select a stage"
+                options={options}
+                value={selectedStage}
+                onchange={changeHandler}>
+            </lightning-combobox>
+            <div class="slds-var-m-top_small">
+                Awesome. You have selected a stage which is {selectedStage}!
+            </div>
+        </div>
+    </lightning-card>
 </template>

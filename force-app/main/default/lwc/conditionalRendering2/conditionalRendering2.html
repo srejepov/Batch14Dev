@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Conditional Renderin 2">
+        <div class="slds-var-m-around_medium">
+            <div class="slds-var-m-bottom_small">
+                <lightning-button
+                    label="Show/Hide Content"
+                    variant="success"
+                    onclick={clickHandler}>
+                </lightning-button>
+            </div>
+            <template lwc:if={showContent}>
+                <div class="slds-text-color_success">
+                    I am visible as showContent in either defined or true
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
