@@ -1,0 +1,38 @@
+<template>
+    <lightning-card title="Ecommerce Product Form - Edit" icon-name="standard:product">
+        <div class="slds-var-m-around_medium">
+            <lightning-record-edit-form
+                object-api-name={objectName}
+                record-id={recordId}
+                onsuccess={successHandler}>
+
+                <lightning-messages></lightning-messages>
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+                        <lightning-input-field field-name={fields.title}></lightning-input-field>
+                        <lightning-input-field field-name={fields.price}></lightning-input-field>
+                        <lightning-input-field field-name={fields.rating}></lightning-input-field>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-input-field field-name={fields.brand}></lightning-input-field>
+                        <lightning-input-field field-name={fields.stock}></lightning-input-field>
+                        <lightning-input-field field-name={fields.category}></lightning-input-field>
+                    </div>
+                </div>
+                <div class="slds-align_absolute-center slds-var-m-top_medium slds-var-m-bottom_x-large">
+                    <lightning-button
+                        label="Cancel"
+                        class="slds-var-m-right_x-small"
+                        variant="neutral"
+                         type="reset">
+                    </lightning-button>
+                    <lightning-button
+                        label="Save"
+                        variant="brand"
+                        type="submit">
+                    </lightning-button>
+                </div>
+            </lightning-record-edit-form>
+        </div>        
+    </lightning-card>
+</template>
