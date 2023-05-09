@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Case Picklists" icon-name="standard:case">
+        <div class="slds-var-m-around_medium">
+            <lightning-combobox
+                label="Select Status"
+                value={selectedStatus}
+                options={statusOptions}
+                onchange={changeHandler}>
+            </lightning-combobox>
+            <div class="slds-text-color_success"> Selected Status: <span class="slds-text-color_error">{selectedStatus}</span></div>
+            <lightning-combobox
+                label="Select Priority"
+                value={selectedPriority}
+                options={priorityOptions}
+                onchange={changeHandler}>                
+            </lightning-combobox>
+            <div class="slds-text-color_success">Selected Priority: <span class="slds-text-color_error">{selectedPriority}</span></div>
+        </div>
+    </lightning-card>
+</template>
