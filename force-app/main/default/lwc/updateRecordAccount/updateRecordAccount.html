@@ -1,0 +1,52 @@
+<template>
+    <lightning-card title="Account Form - Update Record" icon-name="standard:account">
+        <div class="slds-var-m-around_medium">
+            <form class="accountform">
+                <!-- Account Name -->
+                <lightning-input
+                    type="text"
+                    label="Account Name"
+                    name="Name"
+                    value={name}
+                    onblur={changeHandler}>
+                </lightning-input>
+                
+                <!-- Industry-->
+                <lightning-combobox
+                    label="Industry"
+                    name="Industry"
+                    value={industry}
+                    options={industryOptions}
+                    onblur={changeHandler}>
+                </lightning-combobox>
+
+                <!-- Annual Revenue -->
+                <lightning-input 
+                    type="number"
+                    label="Annual Revenue"
+                    name="AnnualRevenue"
+                    value={revenue}
+                    onblur={changeHandler}>
+                </lightning-input>
+
+                <!-- Phone -->
+                <lightning-input
+                    type="tel"
+                    label="Phone"
+                    name="Phone"
+                    value={phone}
+                    onblur={changeHandler}>
+                </lightning-input>
+
+                <!-- Button -->
+                <div class="slds-align_absolute-center slds-var-m-top_medium">
+                    <lightning-button
+                        label="Update Record"
+                        variant="brand-outline"
+                        onclick={updateHandler}>
+                    </lightning-button>
+                </div>
+            </form>
+        </div>
+    </lightning-card>
+</template>

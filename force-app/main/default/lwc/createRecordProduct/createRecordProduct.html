@@ -1,0 +1,60 @@
+<template>
+    <lightning-card title="Product Form" icon-name="standard:product">
+        <div class="slds-var-m-around_medium">
+            <form class="productform">                
+                <!-- Title -->
+                <lightning-input
+                    type="text"
+                    label="Title"
+                    name="Title__c"
+                    onblur={changeHandler}>
+                </lightning-input>
+
+                <!-- Brand -->
+                <lightning-combobox                                        
+                    options={brandOptions}
+                    label="Brand"
+                    name="Brand__c"                    
+                    onblur={changeHandler}>
+                </lightning-combobox>
+                
+                <!-- Category -->
+                <lightning-combobox                                      
+                    options={categoryOptions}
+                    label="Category"
+                    name="Category__c"
+                    onblur={changeHandler}>
+                </lightning-combobox>
+
+                <!-- Price -->
+                <lightning-input
+                    type="number"
+                    label="Price"
+                    name="Price__c"
+                    onblur={changeHandler}>
+                </lightning-input>                
+
+                <!-- Description -->
+                <lightning-textarea
+                    label="Description"
+                    name="Description__c"
+                    onblur={changeHandler}>
+                </lightning-textarea>
+
+                <div class="slds-align_absolute-center slds-var-m-top_medium">
+                    <lightning-button
+                        label="Cancel"                        
+                        variant="neutral"
+                        class="slds-var-m-right_x-small"
+                        onclick={cancelHandler}>
+                    </lightning-button>
+                    <lightning-button
+                        label="Save"                        
+                        variant="brand"
+                        onclick={saveHandler}>
+                    </lightning-button>
+                </div>
+            </form>
+        </div>
+    </lightning-card>
+</template>
