@@ -1,0 +1,14 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-card title="Recent Opportunities" icon-name="standard:opportunity">
+        <div class="slds-var-m-around_medium">
+            <template lwc:if={opps}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={opps}
+                    columns={columns}>
+                </lightning-datatable>
+            </template>
+        </div>
+    </lightning-card>
+</template>

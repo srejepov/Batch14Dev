@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="P2C Age Details" icon-name="standard:individual">
+        <div class="slds-var-m-around_medium">
+            <lightning-input
+                type="number"
+                label="Enter your age to see the magic..."
+                onchange={changeHandler}>
+            </lightning-input>
+            <template lwc:if={studentAge}>
+                <div class="slds-var-m-top_small">
+                    <c-display-age
+                        age={studentAge}>
+                    </c-display-age>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

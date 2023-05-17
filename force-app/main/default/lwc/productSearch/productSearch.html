@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Product Search" icon-name="standard:product">
+        <div class="slds-var-m-around_medium">
+            <lightning-input 
+                type="search"
+                label="Enter an amount to get the products whose price is lower than entered"
+                onchange={changeHandler}>
+            </lightning-input>
+            <template lwc:if={products}>
+                <div class="slds-var-m-top_medium">
+                    <lightning-datatable 
+                        key-field="Id"
+                        data={products}
+                        columns={columns}>
+                    </lightning-datatable>
+                </div>
+            </template>
+            <template lwc:if={error}>
+                <div class="slds-box slds-text-color_error slds-var-m-top_small">
+                    <Strong>Search Error</Strong> <br/>
+                    <div>{error}</div>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

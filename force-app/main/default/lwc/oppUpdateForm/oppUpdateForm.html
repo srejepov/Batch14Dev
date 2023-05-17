@@ -1,0 +1,50 @@
+<template>
+    <lightning-card title="Opp Update Form" icon-name="standard:opportunity">
+        <div class="slds-var-m-around_medium">
+            <form class="oppform">
+                <lightning-input
+                    type="text"
+                    label="Opportunity Name"
+                    name="Name"
+                    value={name}
+                    onchange={changeHandler}>
+                </lightning-input>
+                <lightning-combobox
+                    label="Type"
+                    name="Type"
+                    value={type}
+                    options={typeOptions}
+                    onchange={changeHandler}>
+                </lightning-combobox>
+                <lightning-combobox
+                    label="Stage Name"
+                    name="StageName"
+                    value={stage}
+                    options={stageOptions}
+                    onchange={changeHandler}>
+                </lightning-combobox>
+                <lightning-input
+                    type="number"
+                    label="Amount"
+                    name="Amount"
+                    value={amount}
+                    onchange={changeHandler}>
+                </lightning-input>
+                <lightning-input
+                    type="date"
+                    label="Close Date"
+                    name="CloseDate"
+                    value={closedate}
+                    onchange={changeHandler}>
+                </lightning-input>
+                <div class="slds-align_absolute-center slds-var-m-top_medium">
+                    <lightning-button 
+                        label="Update"
+                        variant="brand"
+                        onclick={updateHandler}>
+                    </lightning-button>
+                </div>
+            </form>
+        </div>
+    </lightning-card>
+</template>
