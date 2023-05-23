@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-var-m-top_medium">
+        <!-- if records are populated -->
+        <template lwc:if={records}>
+            <strong>Result:</strong> <br/>
+            <lightning-datatable
+                key-field="Id"
+                data={records}
+                columns={columns}>
+            </lightning-datatable>
+        </template>
+
+        <!-- if error is populated -->
+        <template lwc:if={error}>
+            <strong>Information:</strong> <br/>
+            <div class="slds-text-color_error">{error}</div>
+        </template>
+    </div>
+</template>

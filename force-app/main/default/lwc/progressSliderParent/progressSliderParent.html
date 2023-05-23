@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="Progress Slider" icon-name="standard:slider">
+        <lightning-button
+            label="Reset"
+            slot="actions"
+            variant="brand"
+            onclick={resetHandler}>
+        </lightning-button>
+        <div class="slds-var-m-around_medium">
+            <lightning-input 
+                type="number"
+                label="Progress Value"
+                name="Progress Value"
+                onchange={changeHandler}>
+            </lightning-input>
+        </div>
+        <div>
+            <c-progress-slider
+                progress-value={selectedValue}>
+            </c-progress-slider>
+        </div>
+    </lightning-card>
+</template>

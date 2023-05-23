@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Event Bubbling" icon-name="standard:ai_accelerator_card">
+        <div class="slds-var-m-around_medium">
+            <div>This is the grand parent component - level 1</div>
+            <c-parent-comp
+                onshow={showHandler}>
+            </c-parent-comp>
+        </div>
+    </lightning-card>
+</template>

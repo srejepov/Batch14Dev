@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Search Contact" icon-name="standard:contact">
+        <div class="slds-var-m-around_medium">
+            <lightning-input
+                type="search"
+                label="Enter some keywords"
+                onchange={changeHandler}>
+            </lightning-input>
+            <div>
+                <c-display-results
+                    records={contacts}
+                    columns={columns}
+                    error={error}>
+                </c-display-results>
+            </div>
+        </div>
+    </lightning-card>
+</template>

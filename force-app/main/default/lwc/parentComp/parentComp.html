@@ -1,0 +1,8 @@
+<template>
+    <div>This is the parent component - level 2</div>
+    <div onshow={showHandler2}>
+        <c-child-comp
+            onshow={showHandler1}>
+        </c-child-comp>
+    </div>
+</template>

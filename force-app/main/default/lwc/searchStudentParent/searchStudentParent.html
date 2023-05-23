@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Search Student" icon-name="standard:people">
+        <div class="slds-var-m-around_medium">
+            <lightning-input 
+                type="search"
+                label="Enter a Postal Code"
+                onchange={changeHandler}>
+            </lightning-input>
+            <div>
+                <c-display-results
+                    records={students}
+                    columns={columns}
+                    error={error}>
+                </c-display-results>
+            </div>
+        </div>
+    </lightning-card>
+</template>
